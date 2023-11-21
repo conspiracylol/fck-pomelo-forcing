@@ -6,15 +6,15 @@ import manifest from '../manifest.json';
 
 import Settings from './components/Settings';
 
-const Typing = getByProps('startTyping');
-const Patcher = create('silent-typing');
+const pomeloProp = getByProps('isPomelo');
+const Patcher = create('fuck-pomelo');
 
-const SilentTyping: Plugin = {
+const fckPomelo: Plugin = {
    ...manifest,
 
    onStart() {
-      Patcher.instead(Typing, 'startTyping', () => { });
-      Patcher.instead(Typing, 'stopTyping', () => { });
+      Patcher.instead(pomeloProp, 'isPomelo', () => { return false; });
+      Patcher.instead(pomeloProp, 'isPomelo', () => { return false; });
    },
 
    onStop() {
@@ -26,4 +26,4 @@ const SilentTyping: Plugin = {
    }
 };
 
-registerPlugin(SilentTyping);
+registerPlugin(fckPomelo);
